@@ -19,7 +19,6 @@ Attribute Yearlystockdata_Macro.VB_ProcData.VB_Invoke_Func = " \n14"
     Dim GreatDecr As Double
     Dim GreatVol As Double
     
- 
     ws.Cells(1, 9).Value = "Ticker"
     ws.Cells(1, 10).Value = "Yearly Change"
     ws.Cells(1, 11).Value = "Percent Change"
@@ -30,35 +29,25 @@ Attribute Yearlystockdata_Macro.VB_ProcData.VB_Invoke_Func = " \n14"
     ws.Cells(3, 15).Value = "Greatest % Decrease"
     ws.Cells(4, 15).Value = "Greatest Total Volume"
     
-    
     TickCount = 2
-    
     
     j = 2
     
    LastRowA = ws.Cells(Rows.Count, 1).End(xlUp).Row
     
-    
-    
     For i = 2 To LastRowA
-    
     
     If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
     
-        
-        ws.Cells(TickCount, 9).Value = ws.Cells(i, 1).Value
+       ws.Cells(TickCount, 9).Value = ws.Cells(i, 1).Value
     
+       ws.Cells(TickCount, 10).Value = ws.Cells(i, 6).Value - ws.Cells(j, 3).Value
         
-        ws.Cells(TickCount, 10).Value = ws.Cells(i, 6).Value - ws.Cells(j, 3).Value
-        
-           
-            If ws.Cells(TickCount, 10).Value < 0 Then
+       If ws.Cells(TickCount, 10).Value < 0 Then
             
-            
-            ws.Cells(TickCount, 10).Interior.ColorIndex = 3
+       ws.Cells(TickCount, 10).Interior.ColorIndex = 3
             
             Else
-            
             
             ws.Cells(TickCount, 10).Interior.ColorIndex = 4
             
@@ -67,7 +56,6 @@ Attribute Yearlystockdata_Macro.VB_ProcData.VB_Invoke_Func = " \n14"
             If ws.Cells(j, 3).Value <> 0 Then
             PerChange = ((ws.Cells(i, 6).Value - ws.Cells(j, 3).Value) / ws.Cells(j, 3).Value)
             
-        
             ws.Cells(TickCount, 11).Value = Format(PerChange, "Percent")
             
             Else
@@ -75,8 +63,6 @@ Attribute Yearlystockdata_Macro.VB_ProcData.VB_Invoke_Func = " \n14"
             ws.Cells(TickCount, 11).Value = Format(0, "Percent")
             
             End If
-            
-        
         
         ws.Cells(TickCount, 12).Value = WorksheetFunction.Sum(Range(ws.Cells(j, 7), ws.Cells(i, 7)))
         
@@ -89,13 +75,11 @@ Attribute Yearlystockdata_Macro.VB_ProcData.VB_Invoke_Func = " \n14"
         
     Next i
     
-   LastRowI = ws.Cells(Rows.Count, 9).End(xlUp).Row
+        LastRowI = ws.Cells(Rows.Count, 9).End(xlUp).Row
 
-        
         GreatVol = ws.Cells(2, 12).Value
         GreatIncr = ws.Cells(2, 11).Value
         GreatDecr = ws.Cells(2, 11).Value
-        
         
             For i = 2 To LastRowI
         
@@ -117,7 +101,6 @@ Attribute Yearlystockdata_Macro.VB_ProcData.VB_Invoke_Func = " \n14"
             
 	End If
         
-       
             If ws.Cells(i, 11).Value < GreatDecr Then
             GreatDecr = ws.Cells(i, 11).Value
             ws.Cells(3, 16).Value = ws.Cells(i, 9).Value

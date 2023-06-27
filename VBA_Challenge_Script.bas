@@ -1,9 +1,7 @@
 Attribute VB_Name = "Module1"
 
-Sub Yearlystockdata_Macro()
-Attribute Yearlystockdata_Macro.VB_Description = "VBA Challenge"
-Attribute Yearlystockdata_Macro.VB_ProcData.VB_Invoke_Func = " \n14"
-    
+Sub Stock_Calculator()
+
     For Each ws In Worksheets
     
     Dim WorksheetName As String
